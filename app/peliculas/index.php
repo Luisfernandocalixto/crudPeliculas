@@ -22,13 +22,36 @@ $dir = "posters/";
     <title>Crud Modal</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script type="importmap">
+        {
+      "imports": {
+        "@material/web/": "https://esm.run/@material/web/"
+      }
+    }
+  </script>
+    <script type="module">
+        import '@material/web/all.js';
+        import {
+            styles as typescaleStyles
+        } from '@material/web/typography/md-typescale-styles.js';
+
+        document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+    <style>
+        :root,
+        body,
+        .container.py-3 {
+            background: #151b23 !important;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container py-3">
 
-        <h2 class="text-center">Peliculas</h2>
+        <h2 class="text-center text-white">Películas</h2>
+
 
         <hr>
 
@@ -48,60 +71,51 @@ $dir = "posters/";
         <div class="row justify-content-end">
 
             <div class="col-auto">
-                <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevoModal">
-                    <svg fill="#fff" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-                        <path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M405.3,277.3c0,11.8-9.5,21.3-21.3,21.3
-                h-85.3V384c0,11.8-9.5,21.3-21.3,21.3h-42.7c-11.8,0-21.3-9.6-21.3-21.3v-85.3H128c-11.8,0-21.3-9.6-21.3-21.3v-42.7
-                c0-11.8,9.5-21.3,21.3-21.3h85.3V128c0-11.8,9.5-21.3,21.3-21.3h42.7c11.8,0,21.3,9.6,21.3,21.3v85.3H384c11.8,0,21.3,9.6,21.3,21.3
-                V277.3z" />
-                    </svg>
+                <!-- <a href="" class="btn btn-primary" > -->
+                <md-filled-button data-bs-toggle="modal" data-bs-target="#nuevoModal">
                     Nuevo registro
-                </a>
+                </md-filled-button>
+                <!-- </a> -->
             </div>
 
         </div>
+        <div class="table-reponsive">
 
-        <table class="table table-sm table-striped table-hover mt-4">
+            <table class="table table-striped table-hover">
 
-            <thead class="table-dark">
-                <tr>
-                    <th>#</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Género</th>
-                    <th>Poster</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Género</th>
+                        <th>Poster</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <tr>
-                    <?php while ($row = $peliculas->fetch_assoc()) { ?>
-                        <td><?= $row['id']; ?></td>
-                        <td><?= $row['nombre']; ?></td>
-                        <td><?= $row['descripcion']; ?></td>
-                        <td><?= $row['genero']; ?></td>
-                        <td> <img src="<?= $dir . $row['id'] . '.jpg?n=' . time(); ?>" alt="" width="50px" height="70px"></td>
-                        <td>
-                            <a href="#" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editaModal" style="color: #fff;" data-bs-id="<?= $row['id']; ?>">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
-                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
-                                </svg>
-                                Editar
-                            </a>
-                            <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-id="<?= $row['id']; ?>">
-                                <svg fill="#fff" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M20,6H16V5a3,3,0,0,0-3-3H11A3,3,0,0,0,8,5V6H4A1,1,0,0,0,4,8H5V19a3,3,0,0,0,3,3h8a3,3,0,0,0,3-3V8h1a1,1,0,0,0,0-2ZM10,5a1,1,0,0,1,1-1h2a1,1,0,0,1,1,1V6H10Zm7,14a1,1,0,0,1-1,1H8a1,1,0,0,1-1-1V8H17Z" />
-                                </svg>
-                                Eliminar
-                            </a>
-                        </td>
-                </tr>
-            <?php } ?>
-            </tbody>
+                <tbody>
+                    <tr>
+                        <?php while ($row = $peliculas->fetch_assoc()) { ?>
+                            <td><?= $row['id']; ?></td>
+                            <td><?= $row['nombre']; ?></td>
+                            <td><?= $row['descripcion']; ?></td>
+                            <td><?= $row['genero']; ?></td>
+                            <td> <img src="<?= $dir . $row['id'] . '.jpg?n=' . time(); ?>" alt="" width="50px" height="70px"></td>
+                            <td>
+                                <md-outlined-button data-bs-toggle="modal" data-bs-target="#editaModal" style="color: #fff;" data-bs-id="<?= $row['id']; ?>">
+                                    Editar
+                                </md-outlined-button>
+                                <md-filled-tonal-button data-bs-toggle="modal" data-bs-target="#eliminaModal" data-bs-id="<?= $row['id']; ?>">
+                                    Eliminar
+                                </md-filled-tonal-button>
+                            </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
 
 
 

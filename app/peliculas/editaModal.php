@@ -42,18 +42,12 @@
                     </div>
 
                     <div class="">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                            <svg width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#fff">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 8.707l3.646 3.647.708-.707L8.707 8l3.647-3.646-.707-.708L8 7.293 4.354 3.646l-.707.708L7.293 8l-3.646 3.646.707.708L8 8.707z" />
-                            </svg>
+                        <md-outlined-button data-bs-dismiss="modal">
                             Cerrar
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);">
-                                <path d="M5 21h14a2 2 0 0 0 2-2V8l-5-5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2zM7 5h4v2h2V5h2v4H7V5zm0 8h10v6H7v-6z"></path>
-                            </svg>
+                        </md-outlined-button>
+                        <md-filled-tonal-button type="submit">
                             Guardar
-                        </button>
+                        </md-filled-tonal-button>
                     </div>
 
                 </form>
